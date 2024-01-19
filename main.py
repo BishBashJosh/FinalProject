@@ -22,4 +22,19 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
+#Creating a bar chart
+df_income['Year'] = pd.Categorical(df_income['Year'], categories=['2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2020-21'], ordered=True)
 
+plt.figure(figsize=(12, 6))
+bar_width = 0.2
+years = df_income['Year'].cat.codes.unique()
+
+for i, area in enumerate(df_income['Area'].unique()):
+    plt.bar(years + i * bar_width, df_income[df_income['Area'] == area]['Income'], width=bar_width, label=area)
+
+plt.title('Income Comparison Across Areas for Each Year')
+plt.xlabel('Year')
+plt.ylabel('Income')
+plt.legend()
+plt.grid(True)
+plt.show()
