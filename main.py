@@ -107,3 +107,30 @@ plt.xlabel('Year')
 plt.ylabel('Mean Score')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.show()
+
+#Comparison between income and mean score
+#Comparison in London 
+df_income_london = df_income[df_income['Area'] == 'London']
+df_gcse_london = df_gcse[df_gcse['Area'] == 'London']
+
+# Creating subplots
+fig, ax1 = plt.subplots(figsize=(12, 6))
+
+# Plotting Income for London on the first subplot
+color = 'tab:red'
+ax1.set_xlabel('Year')
+ax1.set_ylabel('Income', color=color)
+ax1.plot(df_income_london['Year'], df_income_london['Income'], marker='o', color=color, label='Income (London)')
+ax1.tick_params(axis='y', labelcolor=color)
+ax1.legend(loc='upper left')
+
+# Creating a second subplot for Mean Score
+ax2 = ax1.twinx()
+color = 'tab:blue'
+ax2.set_ylabel('Mean Score', color=color)
+ax2.plot(df_gcse_london['Year'], df_gcse_london['Mean Score'], marker='s', color=color, label='Mean Score (London)')
+ax2.tick_params(axis='y', labelcolor=color)
+ax2.legend(loc='upper right')
+
+plt.title('Income and Mean Score in London Over Years')
+plt.show()
