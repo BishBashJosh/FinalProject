@@ -8,6 +8,7 @@ import function
 df_gcse = pd.read_csv('cleansedGcse.csv', encoding = 'UTF-8')
 df_income = pd.read_csv('cleansedIncome.csv', encoding = 'UTF-8')
 
+#Income
 #Creating a line graph
 df_income['Year'] = pd.Categorical(df_income['Year'], categories=['2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2020-21'], ordered=True)
 
@@ -63,4 +64,11 @@ plt.title('Income Over Years for Barking and Dagenham, London and England')
 plt.xlabel('Year')
 plt.ylabel('Income')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+
+#Mean Scores
+#Creating line graph
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='Year', y='Mean Score', hue='Area', data=df_gcse, marker='o')
+plt.title('Mean Scores Over Years')
 plt.show()
