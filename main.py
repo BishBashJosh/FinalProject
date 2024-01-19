@@ -54,3 +54,13 @@ plt.xlabel('Year')
 plt.ylabel('Income')
 plt.legend()
 plt.show()
+
+#Creating line chart for Barking and Dagenham, London and England
+plt.figure(figsize=(12, 6))
+sns.lineplot(x='Year', y='Income', hue='Area', data=df_other_areas, marker='o')
+
+plt.title('Income Over Years for Barking and Dagenham, London and England')
+plt.xlabel('Year')
+plt.ylabel('Income')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
