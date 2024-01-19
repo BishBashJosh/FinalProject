@@ -72,3 +72,15 @@ plt.figure(figsize=(10, 6))
 sns.lineplot(x='Year', y='Mean Score', hue='Area', data=df_gcse, marker='o')
 plt.title('Mean Scores Over Years')
 plt.show()
+
+#Creating Bar Chart
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Area', y='Mean Score', hue='Year', data=df_gcse)
+plt.title('Mean Scores by Area')
+plt.show()
+
+#Creating Box Plot
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Area', y='Mean Score', data=df_gcse)
+plt.title('Distribution of Mean Scores by Area')
+plt.show()
