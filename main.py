@@ -84,3 +84,16 @@ plt.figure(figsize=(10, 6))
 sns.boxplot(x='Area', y='Mean Score', data=df_gcse)
 plt.title('Distribution of Mean Scores by Area')
 plt.show()
+
+#Creating line chart for Kensington and Chelsea
+df_kensington_gcse = df_gcse[df_gcse['Area'] == 'Kensington and Chelsea']
+df_other_areas_gcse = df_gcse[df_gcse['Area'] != 'Kensington and Chelsea']
+
+plt.figure(figsize=(12, 6))
+sns.lineplot(x='Year', y='Mean Score', data=df_kensington_gcse, marker='s', label='Kensington and Chelsea')
+
+plt.title('Mean Scores Over Years in Kensington and Chelsea')
+plt.xlabel('Year')
+plt.ylabel('Mean Score')
+plt.legend()
+plt.show()
