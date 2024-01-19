@@ -97,3 +97,13 @@ plt.xlabel('Year')
 plt.ylabel('Mean Score')
 plt.legend()
 plt.show()
+
+#Creating line chart for Barking and Dagenham, London and England
+plt.figure(figsize=(12, 6))
+sns.lineplot(x='Year', y='Mean Score', hue='Area', data=df_other_areas_gcse, marker='s')
+
+plt.title('Mean Scores Over Years for for Barking and Dagenham, London and England')
+plt.xlabel('Year')
+plt.ylabel('Mean Score')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
