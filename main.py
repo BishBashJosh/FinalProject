@@ -38,3 +38,19 @@ plt.ylabel('Income')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+
+
+
+#Creating line chart for Kensington and Chelsea
+df_kensington = df_income[df_income['Area'] == 'Kensington and Chelsea']
+df_other_areas = df_income[df_income['Area'] != 'Kensington and Chelsea']
+
+plt.figure(figsize=(12, 6))
+sns.lineplot(x='Year', y='Income', data=df_kensington, marker='o', label='Kensington and Chelsea')
+
+plt.title('Income Over Years in Kensington and Chelsea')
+plt.xlabel('Year')
+plt.ylabel('Income')
+plt.legend()
+plt.show()
