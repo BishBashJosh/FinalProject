@@ -160,3 +160,30 @@ ax2.legend(loc='upper right')
 
 plt.title('Income and Mean Score in Barking and Dagenham Over Years')
 plt.show()
+
+#Comparison in Kensington and Chelsea
+df_income_kc = df_income[df_income['Area'] == 'Kensington and Chelsea']
+df_gcse_kc = df_gcse[df_gcse['Area'] == 'Kensington and Chelsea']
+
+# Creating subplots
+fig, ax1 = plt.subplots(figsize=(12, 6))
+
+# Plotting Income for London on the first subplot
+color = 'tab:red'
+ax1.set_xlabel('Year')
+ax1.set_ylabel('Income', color=color)
+ax1.plot(df_income_kc['Year'], df_income_kc['Income'], marker='o', color=color, label='Income (Kensington and Chelsea)')
+ax1.tick_params(axis='y', labelcolor=color)
+ax1.legend(loc='upper left')
+
+# Creating a second subplot for Mean Score
+ax2 = ax1.twinx()
+color = 'tab:blue'
+ax2.set_ylabel('Mean Score', color=color)
+ax2.plot(df_gcse_kc['Year'], df_gcse_kc['Mean Score'], marker='s', color=color, label='Mean Score (Kensington and Chelsea)')
+ax2.tick_params(axis='y', labelcolor=color)
+ax2.legend(loc='upper right')
+
+plt.title('Income and Mean Score in Kensington and Chelsea Over Years')
+plt.show()
+
