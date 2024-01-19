@@ -1,12 +1,25 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 import numpy as np
 import unittest 
 import function
 
-
 df_gcse = pd.read_csv('cleansedGcse.csv', encoding = 'UTF-8')
 df_income = pd.read_csv('cleansedIncome.csv', encoding = 'UTF-8')
 
-#print (df_gcse)
-print (df_income)
+#Creating a line graph
+df_income['Year'] = pd.Categorical(df_income['Year'], categories=['2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2020-21'], ordered=True)
+
+plt.figure(figsize=(10, 6))
+for area in df_income['Area'].unique():
+    plt.plot(df_income[df_income['Area'] == area]['Year'], df_income[df_income['Area'] == area]['Income'], label=area, marker='o')
+
+plt.title('Income Over Years for Different Areas')
+plt.xlabel('Year')
+plt.ylabel('Income')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
