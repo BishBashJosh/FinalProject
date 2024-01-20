@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
+from scipy import stats
+from scipy.stats import pearsonr
 import unittest 
 import function
 
@@ -212,3 +214,26 @@ ax2.legend(loc='upper right')
 
 plt.title('Income and Mean Score in England Over Years')
 plt.show()
+
+#Correlation
+df_merged = pd.merge(df_income, df_gcse, on=['Year', 'Area'])
+
+df_area = df_merged[df_merged['Area'] == 'Kensington and Chelsea']
+correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
+print(f"Pearson Correlation Coefficient for Kensington and Chelsea: {correlation_coefficient}")
+print(f"P-value: {p_value}")
+
+df_area = df_merged[df_merged['Area'] == 'Barking and Dagenham']
+correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
+print(f"Pearson Correlation Coefficient for Barking and Dagenham: {correlation_coefficient}")
+print(f"P-value: {p_value}")
+
+df_area = df_merged[df_merged['Area'] == 'London']
+correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
+print(f"Pearson Correlation Coefficient for London: {correlation_coefficient}")
+print(f"P-value: {p_value}")
+
+df_area = df_merged[df_merged['Area'] == 'England']
+correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
+print(f"Pearson Correlation Coefficient for England: {correlation_coefficient}")
+print(f"P-value: {p_value}")
