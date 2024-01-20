@@ -7,11 +7,12 @@ from scipy.stats import pearsonr
 import unittest 
 import function
 
+# Reading the datasets
 df_gcse = pd.read_csv('cleansedGcse.csv', encoding = 'UTF-8')
 df_income = pd.read_csv('cleansedIncome.csv', encoding = 'UTF-8')
 
-#Income
-#Creating a line graph
+# Income Visualizations
+# Line graph for income trends over the years for different areas
 df_income['Year'] = pd.Categorical(df_income['Year'], categories=['2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2020-21'], ordered=True)
 
 plt.figure(figsize=(10, 6))
@@ -25,7 +26,7 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-#Creating a bar chart
+# Bar chart for income comparison across different areas for each year
 df_income['Year'] = pd.Categorical(df_income['Year'], categories=['2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2020-21'], ordered=True)
 
 plt.figure(figsize=(12, 6))
@@ -45,7 +46,7 @@ plt.show()
 
 
 
-#Creating line chart for Kensington and Chelsea
+# Line chart for income trends in Kensington and Chelsea
 df_kensington = df_income[df_income['Area'] == 'Kensington and Chelsea']
 df_other_areas = df_income[df_income['Area'] != 'Kensington and Chelsea']
 
@@ -58,7 +59,7 @@ plt.ylabel('Income')
 plt.legend()
 plt.show()
 
-#Creating line chart for Barking and Dagenham, London and England
+# Line chart for income trends in Barking and Dagenham, London, and England
 plt.figure(figsize=(12, 6))
 sns.lineplot(x='Year', y='Income', hue='Area', data=df_other_areas, marker='o')
 
@@ -68,26 +69,26 @@ plt.ylabel('Income')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.show()
 
-#Mean Scores
-#Creating line graph
+# Mean Scores Visualizations
+# Line graph for mean scores over the years
 plt.figure(figsize=(10, 6))
 sns.lineplot(x='Year', y='Mean Score', hue='Area', data=df_gcse, marker='o')
 plt.title('Mean Scores Over Years')
 plt.show()
 
-#Creating Bar Chart
+# Bar chart for mean scores by area
 plt.figure(figsize=(10, 6))
 sns.barplot(x='Area', y='Mean Score', hue='Year', data=df_gcse)
 plt.title('Mean Scores by Area')
 plt.show()
 
-#Creating Box Plot
+# Box plot for the distribution of mean scores by area
 plt.figure(figsize=(10, 6))
 sns.boxplot(x='Area', y='Mean Score', data=df_gcse)
 plt.title('Distribution of Mean Scores by Area')
 plt.show()
 
-#Creating line chart for Kensington and Chelsea
+# Line chart for mean scores trends in Kensington and Chelsea
 df_kensington_gcse = df_gcse[df_gcse['Area'] == 'Kensington and Chelsea']
 df_other_areas_gcse = df_gcse[df_gcse['Area'] != 'Kensington and Chelsea']
 
@@ -100,7 +101,7 @@ plt.ylabel('Mean Score')
 plt.legend()
 plt.show()
 
-#Creating line chart for Barking and Dagenham, London and England
+# Line chart for mean scores trends in Barking and Dagenham, London, and England
 plt.figure(figsize=(12, 6))
 sns.lineplot(x='Year', y='Mean Score', hue='Area', data=df_other_areas_gcse, marker='s')
 
@@ -110,12 +111,12 @@ plt.ylabel('Mean Score')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.show()
 
-#Comparison between income and mean score
-#Comparison in London 
+# Comparison between income and mean score
+# Comparison in London
 df_income_london = df_income[df_income['Area'] == 'London']
 df_gcse_london = df_gcse[df_gcse['Area'] == 'London']
 
-# Creating subplots
+# Creating subplots for income and mean scores in London
 fig, ax1 = plt.subplots(figsize=(12, 6))
 
 # Plotting Income for London on the first subplot
@@ -137,14 +138,15 @@ ax2.legend(loc='upper right')
 plt.title('Income and Mean Score in London Over Years')
 plt.show()
 
-#Comparison in Barking and Dagenham 
+# Comparison in Barking and Dagenham
+# Selecting data for Barking and Dagenham from income and GCSE datasets
 df_income_bd = df_income[df_income['Area'] == 'Barking and Dagenham']
 df_gcse_bd = df_gcse[df_gcse['Area'] == 'Barking and Dagenham']
 
-# Creating subplots
+# Creating subplots for income and mean scores
 fig, ax1 = plt.subplots(figsize=(12, 6))
 
-# Plotting Income for London on the first subplot
+# Plotting Income for Barking and Dagenham on the first subplot
 color = 'tab:red'
 ax1.set_xlabel('Year')
 ax1.set_ylabel('Income', color=color)
@@ -163,14 +165,15 @@ ax2.legend(loc='upper right')
 plt.title('Income and Mean Score in Barking and Dagenham Over Years')
 plt.show()
 
-#Comparison in Kensington and Chelsea
+# Comparison in Kensington and Chelsea
+# Selecting data for Kensington and Chelsea from income and GCSE datasets
 df_income_kc = df_income[df_income['Area'] == 'Kensington and Chelsea']
 df_gcse_kc = df_gcse[df_gcse['Area'] == 'Kensington and Chelsea']
 
-# Creating subplots
+# Creating subplots for income and mean scores
 fig, ax1 = plt.subplots(figsize=(12, 6))
 
-# Plotting Income for London on the first subplot
+# Plotting Income for Kensington and Chelsea on the first subplot
 color = 'tab:red'
 ax1.set_xlabel('Year')
 ax1.set_ylabel('Income', color=color)
@@ -189,14 +192,15 @@ ax2.legend(loc='upper right')
 plt.title('Income and Mean Score in Kensington and Chelsea Over Years')
 plt.show()
 
-#Comparison in England
+# Comparison in England
+# Selecting data for England from income and GCSE datasets
 df_income_england = df_income[df_income['Area'] == 'England']
 df_gcse_england = df_gcse[df_gcse['Area'] == 'England']
 
-# Creating subplots
+# Creating subplots for income and mean scores
 fig, ax1 = plt.subplots(figsize=(12, 6))
 
-# Plotting Income for London on the first subplot
+# Plotting Income for England on the first subplot
 color = 'tab:red'
 ax1.set_xlabel('Year')
 ax1.set_ylabel('Income', color=color)
@@ -215,24 +219,29 @@ ax2.legend(loc='upper right')
 plt.title('Income and Mean Score in England Over Years')
 plt.show()
 
-#Correlation
+# Correlation
+# Merging income and GCSE datasets on 'Year' and 'Area'
 df_merged = pd.merge(df_income, df_gcse, on=['Year', 'Area'])
 
+# Calculating and printing Pearson correlation coefficient and p-value for Kensington and Chelsea
 df_area = df_merged[df_merged['Area'] == 'Kensington and Chelsea']
 correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
 print(f"Pearson Correlation Coefficient for Kensington and Chelsea: {correlation_coefficient}")
 print(f"P-value: {p_value}")
 
+# Calculating and printing Pearson correlation coefficient and p-value for Barking and Dagenham
 df_area = df_merged[df_merged['Area'] == 'Barking and Dagenham']
 correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
 print(f"Pearson Correlation Coefficient for Barking and Dagenham: {correlation_coefficient}")
 print(f"P-value: {p_value}")
 
+# Calculating and printing Pearson correlation coefficient and p-value for London
 df_area = df_merged[df_merged['Area'] == 'London']
 correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
 print(f"Pearson Correlation Coefficient for London: {correlation_coefficient}")
 print(f"P-value: {p_value}")
 
+# Calculating and printing Pearson correlation coefficient and p-value for England
 df_area = df_merged[df_merged['Area'] == 'England']
 correlation_coefficient, p_value = pearsonr(df_area['Income'], df_area['Mean Score'])
 print(f"Pearson Correlation Coefficient for England: {correlation_coefficient}")
